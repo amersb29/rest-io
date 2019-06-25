@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterMessagesTable extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AlterMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,9 +26,6 @@ class AlterMessagesTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('messages');
-        Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('payment_methods');
     }
 }

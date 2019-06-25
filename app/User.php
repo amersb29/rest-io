@@ -39,20 +39,19 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany('App\Role', 'assigned_roles');
+        // return $this->belongsToMany('App\Role', 'assigned_roles');
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function membership(){
+        return $this->belongsTo(Memberships::class);
+    }
+
+    public function products(){
+        return $this->hasMany(Products::class);
     }
 
     public function hasRoles(array $roles){
-      // foreach ($roles as $role) {
-      //   foreach ($this->roles as $usrRole) {
-      //     if ($usrRole->name === $role) {
-      //       return true;
-      //     }
-      //   }
-      // }
-      //
-      // return false;
-
       return $this->roles->pluck('name')->intersect($roles)->count();
     }
 

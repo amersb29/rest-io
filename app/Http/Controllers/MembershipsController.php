@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Memberships;
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+class MembershipsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,14 +14,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-      $portfolio = [
-          ['title' => 'Proyecto #1'],
-          ['title' => 'Proyecto #2'],
-          ['title' => 'Proyecto #3'],
-          ['title' => 'Proyecto #4'],
-      ];
-
-      return view('/portfolio', compact('portfolio'));
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class PortfolioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Memberships  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Memberships $memberships)
     {
         //
     }
@@ -58,10 +52,10 @@ class PortfolioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Memberships  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Memberships $memberships)
     {
         //
     }
@@ -70,10 +64,10 @@ class PortfolioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Memberships  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Memberships $memberships)
     {
         //
     }
@@ -81,10 +75,10 @@ class PortfolioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Memberships  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Memberships $memberships)
     {
         //
     }

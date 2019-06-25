@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Http\Requests\UpdateUserRequest;
+use App\Coupons;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class CouponsController extends Controller
 {
-
-    function __construct(){
-      $this->middleware('auth', ['except' => ['show'] ] );
-      $this->middleware('roles:admin', ['except' => ['edit', 'update', 'show'] ] );
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = \App\User::all();
-
-        return view('users.index', compact('users'));
+        //
     }
 
     /**
@@ -50,63 +41,45 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Coupons  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Coupons $coupons)
     {
-        $user = User::findOrFail($id);
-
-        return view('users.show', compact('user'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Coupons  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Coupons $coupons)
     {
-        $user = User::findOrFail($id);
-
-        $this->authorize('edit', $user);
-
-        return view('users.edit', compact('user'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Coupons  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request, Coupons $coupons)
     {
-        $user = User::findOrFail($id);
-
-        $this->authorize('update', $user);
-
-        $user->update($request->all());
-
-        return back()->with('info', 'Usuario actualizado');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Coupons  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Coupons $coupons)
     {
-        $user = User::findOrFail($id);
-
-        $this->authorize('destroy', $user);
-
-        $user->delete();
-
-        return back();
+        //
     }
 }
