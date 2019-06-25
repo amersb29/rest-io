@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedInteger('membership_id');
-            $table->foreign('membership_id')->references('id')->on('memberships')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

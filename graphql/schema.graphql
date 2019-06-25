@@ -5,14 +5,40 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 type Query {
-    users: [User!]! @paginate(type: "paginator" model: "App\\User")
+    users: [User!]! @all
+    # @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+
+    memberships: [Memberships] @all
+    membership(id: ID @eq): Memberships @find(model: "App\\Memberships")
+
+    roles: [Role] @all
+    # role(id: ID @eq): Role @find(model: "App\Role")
+    
 }
 
 type User {
     id: ID!
-    name: String!
+    first_name: String!
+    last_name: String!
     email: String!
+    # roles: [Role] @belongsToMany
+    membership: Memberships! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Memberships {
+    id: ID!
+    name: String!
+    price: Int!
+    users: [User] @hasMany
+}
+
+type Role {
+    id: ID!
+    name: String!
+    display_name: String
+    description: String
+    # users: [User] @hasMany
 }

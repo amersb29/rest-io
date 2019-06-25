@@ -17,7 +17,6 @@ class CreateMembershipsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
-            $table->smallInteger('vigencia');
             $table->timestamps();
         });
     }
