@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notebooks extends Model
+class PaymentMethod extends Model
 {
     //
 }

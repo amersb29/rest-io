@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Role;
-use App\Memberships;
+use App\Membership;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,11 +44,11 @@ class User extends Authenticatable
     }
 
     public function membership(){
-        return $this->belongsTo(Memberships::class);
+        return $this->belongsTo(Membership::class);
     }
 
     public function products(){
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Product::class);
     }
 
     public function hasRoles(array $roles){

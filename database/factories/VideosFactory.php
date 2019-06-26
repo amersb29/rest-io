@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Videos::class, function (Faker $faker) {
+$factory->define(App\Video::class, function (Faker $faker) {
     return [
         //
     ];

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Previews;
+use App\Preview;
 use Illuminate\Http\Request;
 
-class PreviewsController extends Controller
+class PreviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PreviewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Previews  $previews
+     * @param  \App\Preview  $previews
      * @return \Illuminate\Http\Response
      */
-    public function show(Previews $previews)
+    public function show(Preview $previews)
     {
         //
     }
@@ -52,10 +52,10 @@ class PreviewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Previews  $previews
+     * @param  \App\Preview  $previews
      * @return \Illuminate\Http\Response
      */
-    public function edit(Previews $previews)
+    public function edit(Preview $previews)
     {
         //
     }
@@ -64,10 +64,10 @@ class PreviewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Previews  $previews
+     * @param  \App\Preview  $previews
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Previews $previews)
+    public function update(Request $request, Preview $previews)
     {
         //
     }
@@ -75,10 +75,10 @@ class PreviewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Previews  $previews
+     * @param  \App\Preview  $previews
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Previews $previews)
+    public function destroy(Preview $previews)
     {
         //
     }

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class Memberships extends Model
+class Membership extends Model
 {
     protected $guarded = [];
 

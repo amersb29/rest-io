@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Notebooks;
+use App\Notebook;
 use Illuminate\Http\Request;
 
-class NotebooksController extends Controller
+class NotebookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class NotebooksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Notebooks  $notebooks
+     * @param  \App\Notebook  $notebooks
      * @return \Illuminate\Http\Response
      */
-    public function show(Notebooks $notebooks)
+    public function show(Notebook $notebooks)
     {
         //
     }
@@ -52,10 +52,10 @@ class NotebooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Notebooks  $notebooks
+     * @param  \App\Notebook  $notebooks
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notebooks $notebooks)
+    public function edit(Notebook $notebooks)
     {
         //
     }
@@ -64,10 +64,10 @@ class NotebooksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Notebooks  $notebooks
+     * @param  \App\Notebook  $notebooks
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Notebooks $notebooks)
+    public function update(Request $request, Notebook $notebooks)
     {
         //
     }
@@ -75,10 +75,10 @@ class NotebooksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Notebooks  $notebooks
+     * @param  \App\Notebook  $notebooks
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notebooks $notebooks)
+    public function destroy(Notebook $notebooks)
     {
         //
     }

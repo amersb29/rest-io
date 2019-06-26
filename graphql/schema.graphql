@@ -9,8 +9,8 @@ type Query {
     # @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
 
-    memberships: [Memberships] @all
-    membership(id: ID @eq): Memberships @find(model: "App\\Memberships")
+    memberships: [Membership] @all
+    membership(id: ID @eq): Membership @find(model: "App\\Membership")
 
     roles: [Role] @all
     role(id: ID @eq): Role @find(model: "App\\Role")
@@ -23,12 +23,12 @@ type User {
     last_name: String!
     email: String!
     roles: [Role!]! @belongsToMany
-    membership: Memberships! @belongsTo
+    membership: Membership! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
 }
 
-type Memberships {
+type Membership {
     id: ID!
     name: String!
     price: Int!

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Memberships;
+use App\Membership;
 use Illuminate\Http\Request;
 
-class MembershipsController extends Controller
+class MembershipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MembershipsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Memberships  $memberships
+     * @param  \App\Membership  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function show(Memberships $memberships)
+    public function show(Membership $memberships)
     {
         //
     }
@@ -52,10 +52,10 @@ class MembershipsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Memberships  $memberships
+     * @param  \App\Membership  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function edit(Memberships $memberships)
+    public function edit(Membership $memberships)
     {
         //
     }
@@ -64,10 +64,10 @@ class MembershipsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Memberships  $memberships
+     * @param  \App\Membership  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Memberships $memberships)
+    public function update(Request $request, Membership $memberships)
     {
         //
     }
@@ -75,10 +75,10 @@ class MembershipsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Memberships  $memberships
+     * @param  \App\Membership  $memberships
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Memberships $memberships)
+    public function destroy(Membership $memberships)
     {
         //
     }

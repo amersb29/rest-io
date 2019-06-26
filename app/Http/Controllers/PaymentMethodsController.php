@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\PaymentMethods;
+use App\PaymentMethod;
 use Illuminate\Http\Request;
 
-class PaymentMethodsController extends Controller
+class PaymentMethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PaymentMethodsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\PaymentMethods  $paymentMethods
+     * @param  \App\PaymentMethod  $paymentMethods
      * @return \Illuminate\Http\Response
      */
-    public function show(PaymentMethods $paymentMethods)
+    public function show(PaymentMethod $paymentMethods)
     {
         //
     }
@@ -52,10 +52,10 @@ class PaymentMethodsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PaymentMethods  $paymentMethods
+     * @param  \App\PaymentMethod  $paymentMethods
      * @return \Illuminate\Http\Response
      */
-    public function edit(PaymentMethods $paymentMethods)
+    public function edit(PaymentMethod $paymentMethods)
     {
         //
     }
@@ -64,10 +64,10 @@ class PaymentMethodsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaymentMethods  $paymentMethods
+     * @param  \App\PaymentMethod  $paymentMethods
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaymentMethods $paymentMethods)
+    public function update(Request $request, PaymentMethod $paymentMethods)
     {
         //
     }
@@ -75,10 +75,10 @@ class PaymentMethodsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PaymentMethods  $paymentMethods
+     * @param  \App\PaymentMethod  $paymentMethods
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PaymentMethods $paymentMethods)
+    public function destroy(PaymentMethod $paymentMethods)
     {
         //
     }
