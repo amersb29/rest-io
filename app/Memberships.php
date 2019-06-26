@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Memberships extends Model
 {
@@ -10,6 +11,6 @@ class Memberships extends Model
 
     public function users()
     {
-        return $this->hasMany(Users::class);
+        return $this->hasMany(User::class);
     }
 }

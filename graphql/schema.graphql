@@ -13,7 +13,7 @@ type Query {
     membership(id: ID @eq): Memberships @find(model: "App\\Memberships")
 
     roles: [Role] @all
-    # role(id: ID @eq): Role @find(model: "App\Role")
+    role(id: ID @eq): Role @find(model: "App\\Role")
     
 }
 
@@ -22,7 +22,7 @@ type User {
     first_name: String!
     last_name: String!
     email: String!
-    # roles: [Role] @belongsToMany
+    roles: [Role!]! @belongsToMany
     membership: Memberships! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
@@ -40,5 +40,5 @@ type Role {
     name: String!
     display_name: String
     description: String
-    # users: [User] @hasMany
+    users: [User!]! @belongsToMany
 }
