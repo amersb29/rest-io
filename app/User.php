@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Role;
 use App\Membership;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,15 +43,28 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'assigned_roles');
     }
 
-    public function membership(){
+    public function paymentMethods()
+    {
+        return $this->belongsToMany('App\PaymentMethod', 'assigned_payment_methods');
+    }
+
+    public function coupons()
+    {
+        return $this->belongsToMany('App\Coupon', 'assigned_coupons');
+    }
+
+    public function membership()
+    {
         return $this->belongsTo(Membership::class);
     }
 
-    public function products(){
+    public function products()
+    {
         return $this->hasMany(Product::class);
     }
 
-    public function hasRoles(array $roles){
+    public function hasRoles(array $roles)
+    {
       return $this->roles->pluck('name')->intersect($roles)->count();
     }
 
