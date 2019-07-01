@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateRolesPermissionsRelationSeeder::class);
         $this->call(CreatePaymentMethodsSeeder::class);
         $this->call(CreatePMUsersRelationSeeder::class);
+        $this->call(CreateProductsSeeder::class);
+        $this->call(CreateUsersProductsRelationSeeder::class);
+        
     }
 }

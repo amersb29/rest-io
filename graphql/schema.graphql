@@ -21,8 +21,8 @@ type Query {
     # coupons: [Coupon] @all
     # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
 
-    # products: [Product] @all
-    # product: Product(id: ID @eq): Product @find(model: "App\\Product")
+    products: [Product] @all
+    product(id: ID @eq): Product @find(model: "App\\Product")
 
     # videos: [Video] @all
     # video: Video(id: ID @eq): Video @find(model: "App\\Video")
@@ -41,7 +41,7 @@ type User {
     paymentMethods: [PaymentMethod] @belongsToMany
     # coupons: [Coupon] @belongsToMany
     membership: Membership @belongsTo
-    # products: [Product] @hasMany
+    products: [Product] @hasMany
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -82,16 +82,16 @@ type PaymentMethod {
 #     users: [User!]! @belongsToMany
 # }
 
-# type Product {
-#     id: ID!
-#     tpProducto_id: Int!
-#     name: String!
-#     description: String!
-#     url_img: String!
-#     users: [User!]! @belongsToMany
-#     videos: [Video] @hasMany
-#     notebook: [Notebook] @hasOne
-# }
+type Product {
+    id: ID!
+    # tpProducto_id: Int!
+    name: String!
+    description: String!
+    url_img: String!
+    users: [User!]! @belongsToMany
+    # videos: [Video] @hasMany
+    # notebook: [Notebook] @hasOne
+}
 
 # type Video {
 #     id: ID!

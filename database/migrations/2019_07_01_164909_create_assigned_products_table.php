@@ -15,7 +15,7 @@ class CreateAssignedProductsTable extends Migration
     {
         Schema::create('assigned_products', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->integer('products_id')->unsigned();
+            $table->integer('product_id')->unsigned();
         });
     }
 
