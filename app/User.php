@@ -55,12 +55,12 @@ class User extends Authenticatable
 
     public function membership()
     {
-        return $this->belongsTo(Membership::class);
+        return $this->belongsTo('App\Membership', 'memberships_id');
     }
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany('App\Product', 'assigned_products');
     }
 
     public function hasRoles(array $roles)

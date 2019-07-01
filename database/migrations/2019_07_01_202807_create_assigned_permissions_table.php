@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAssignedPaymentMethods extends Migration
+class CreateAssignedPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAssignedPaymentMethods extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_payment_methods', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->integer('payment_method_id')->unsigned();
+        Schema::create('assigned_permissions', function (Blueprint $table) {
+            $table->integer('role_id')->unsigned();
+            $table->integer('permission_id')->unsigned();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateAssignedPaymentMethods extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigned_payment_methods');
+        Schema::dropIfExists('assigned_permissions');
     }
 }

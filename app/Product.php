@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->hasOne(Notebook::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'assigned_products');
+    }
 }

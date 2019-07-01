@@ -15,15 +15,33 @@ type Query {
     roles: [Role] @all
     role(id: ID @eq): Role @find(model: "App\\Role")
     
+    paymentMethods: [PaymentMethod] @all
+    paymentMethod(id: ID @eq): PaymentMethod @find(model: "App\\PaymentMethod")
+
+    # coupons: [Coupon] @all
+    # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
+
+    # products: [Product] @all
+    # product: Product(id: ID @eq): Product @find(model: "App\\Product")
+
+    # videos: [Video] @all
+    # video: Video(id: ID @eq): Video @find(model: "App\\Video")
+
+    # notebooks: [Notebook] @all
+    # notebook: Notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
 }
 
 type User {
     id: ID!
+    state: Int!
     first_name: String!
     last_name: String!
     email: String!
     roles: [Role!]! @belongsToMany
-    membership: Membership! @belongsTo
+    paymentMethods: [PaymentMethod] @belongsToMany
+    # coupons: [Coupon] @belongsToMany
+    membership: Membership @belongsTo
+    # products: [Product] @hasMany
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -38,7 +56,54 @@ type Membership {
 type Role {
     id: ID!
     name: String!
-    display_name: String
     description: String
+    permissions: [Permission!]! @belongsToMany
     users: [User!]! @belongsToMany
 }
+
+type Permission {
+    id: ID!
+    name: String!
+    description: String
+    roles: [Role!]! @belongsToMany
+}
+
+type PaymentMethod {
+    id: ID!
+    name: String!
+    description: String!
+    users: [User!]! @belongsToMany
+}
+
+# type Coupon {
+#     id: ID!
+#     code: String!
+#     expiration: DateTime!
+#     users: [User!]! @belongsToMany
+# }
+
+# type Product {
+#     id: ID!
+#     tpProducto_id: Int!
+#     name: String!
+#     description: String!
+#     url_img: String!
+#     users: [User!]! @belongsToMany
+#     videos: [Video] @hasMany
+#     notebook: [Notebook] @hasOne
+# }
+
+# type Video {
+#     id: ID!
+#     products_id: Int!
+#     name: String!
+#     vimeo_id: String!
+#     product: Product @belongsTo
+# }
+
+# type Notebook {
+#     id: ID!
+#     products_id: Int!
+#     name: String!
+#     product: Product @belongsTo
+# }
