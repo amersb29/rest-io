@@ -7,7 +7,7 @@ use App\Product;
 
 class Notebook extends Model
 {
-    public function producto()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

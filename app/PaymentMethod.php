@@ -10,4 +10,9 @@ class PaymentMethod extends Model
     {
         return $this->belongsToMany('App\User', 'assigned_payment_methods');
     }
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

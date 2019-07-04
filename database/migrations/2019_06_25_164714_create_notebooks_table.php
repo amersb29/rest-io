@@ -15,7 +15,7 @@ class CreateNotebooksTable extends Migration
     {
         Schema::create('notebooks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('products_id');
+            $table->unsignedInteger('product_id');
             $table->string('name');
             $table->timestamps();
         });

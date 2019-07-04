@@ -15,9 +15,10 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('products_id');
+            $table->unsignedInteger('product_id');
             $table->string('name');
             $table->string('vimeo_id');
+            $table->boolean('is_preview')->default(false);
             $table->timestamps();
         });
     }
