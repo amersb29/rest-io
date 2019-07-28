@@ -24,8 +24,8 @@ type Query {
     payments: [Payment] @all
     payments(user_id: Int! @eq): [Payment] @all
 
-    # coupons: [Coupon] @all
-    # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
+    coupons: [Coupon] @all
+    coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
 
     products: [Product] @all
     product(id: ID @eq): Product @find(model: "App\\Product")
@@ -46,14 +46,18 @@ type User {
     email: String!
     roles: [Role!]! @belongsToMany
     paymentMethods: [PaymentMethod] @belongsToMany
-    # coupons: [Coupon] @belongsToMany
+    coupons: [Coupon] @hasMany
     membership: Membership @belongsTo
     products: [Product] @hasMany
     purchases: [Purchase] @hasMany
     payments: [Payment] @hasMany
-
+    notes: [Note] @hasMany
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Note {
+    text: String!
 }
 
 type Membership {
@@ -100,12 +104,12 @@ type Purchase {
     # purchase_status_id
 }
 
-# type Coupon {
-#     id: ID!
-#     code: String!
-#     expiration: DateTime!
-#     users: [User!]! @belongsToMany
-# }
+type Coupon {
+    id: ID!
+    code: String!
+    expiration: DateTime!
+    users: [User!]! @belongsTo
+}
 
 type TipoProducto {
     id: ID!
