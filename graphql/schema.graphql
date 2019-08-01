@@ -141,3 +141,12 @@ type Notebook {
     name: String!
     product: Product! @belongsTo
 }
+
+type Mutation {
+    createUser(
+        first_name: String @rules(apply: ["required"])
+        last_name: String @rules(apply: ["required"])
+        email: String @rules(apply: ["required", "email", "unique:users,email"])
+        password: String @rules(apply: ["required"]) @bcrypt
+    ): User @create(model: "App\\User")
+}
