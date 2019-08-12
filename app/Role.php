@@ -8,7 +8,7 @@ use App\User;
 class Role extends Model
 {
   protected $fillable = [
-      'name', 'display_name',
+      'name', 'description',
   ];
 
   public function users()

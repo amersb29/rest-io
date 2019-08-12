@@ -145,4 +145,53 @@ type Mutation {
         email: String @rules(apply: ["required", "email", "unique:users,email"])
         password: String @rules(apply: ["required"]) @bcrypt
     ): User @create(model: "App\\User")
+    updateUser(
+        id: ID @rules(apply: ["required"])
+        first_name: String 
+        last_name: String 
+        email: String @rules(apply: ["email", "unique:users,email"])
+        password: String @bcrypt
+    ): User @update(model: "App\\User")
+    deleteUser(
+        id: ID @rules(apply: ["required"])
+    ): User @delete(model: "App\\User")
+
+    createMembership(
+        name: String @rules(apply: ["required"])
+        price: Int @rules(apply: ["required"])
+    ): Membership @create(model: "App\\Membership")
+    updateMembership(
+        id: ID @rules(apply: ["required"])
+        name: String 
+        price: Int 
+    ): Membership @update(model: "App\\Membership")
+    deleteMembership(
+        id: ID @rules(apply: ["required"])
+    ): Membership @delete(model: "App\\Membership")
+
+    createRole(
+        name: String @rules(apply: ["required"])
+        description: String
+    ): Role @create(model: "App\\Role")
+    updateRole(
+        id: ID @rules(apply: ["required"])
+        name: String
+        description: String
+    ): Role @update(model: "App\\Role")
+    deleteRole(
+        id: ID @rules(apply: ["required"])
+    ): Role @delete(model: "App\\Role")
+
+    createPaymentMethod(
+        name: String @rules(apply: ["required"])
+        description: String @rules(apply: ["required"])
+    ): PaymentMethod @create(model: "App\\PaymentMethod")
+    updatePaymentMethod(
+        id: ID @rules(apply: ["required"])
+        name: String
+        description: String
+    ): PaymentMethod @update(model: "App\\PaymentMethod")
+    deletePaymentMethod(
+        id: ID @rules(apply: ["required"])
+    ): PaymentMethod @delete(model: "App\\PaymentMethod")
 }
