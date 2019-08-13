@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'memberships_id'
+        'first_name', 'last_name', 'email', 'password', 'memberships_id', 'countries_id',
     ];
 
     /**
@@ -39,6 +39,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country()
+    {
+        return $this->belongsTo('App\Country', 'countries_id');
+    }
 
     public function roles(){
         return $this->belongsToMany('App\Role', 'assigned_roles');

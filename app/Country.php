@@ -3,21 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
 
-class Membership extends Model
+class Country extends Model
 {
-    /**
+        /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'price',
+        'name', 'code',
     ];
 
     public function users()
     {
-        return $this->hasMany('App\User', 'memberships_id');
+        return $this->hasMany('App\User', 'countries_id');
     }
 }

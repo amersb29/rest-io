@@ -12,6 +12,9 @@ type Query {
     memberships: [Membership] @all
     membership(id: ID @eq): Membership @find(model: "App\\Membership")
 
+    countries: [Country] @all
+    country(id: ID @eq): Country @find(model: "App\\Country")
+
     roles: [Role] @all
     role(id: ID @eq): Role @find(model: "App\\Role")
     
@@ -48,6 +51,7 @@ type User {
     paymentMethods: [PaymentMethod] @belongsToMany
     # coupons: [Coupon] @belongsToMany
     membership: Membership @belongsTo
+    country: Country @belongsTo
     products: [Product] @hasMany
     purchases: [Purchase] @hasMany
     payments: [Payment] @hasMany
@@ -60,6 +64,13 @@ type Membership {
     id: ID!
     name: String!
     price: Int!
+    users: [User] @hasMany
+}
+
+type Country {
+    id: ID!
+    name: String!
+    code: String!
     users: [User] @hasMany
 }
 
@@ -145,6 +156,7 @@ type Mutation {
         email: String @rules(apply: ["required", "email", "unique:users,email"])
         password: String @rules(apply: ["required"]) @bcrypt
         memberships_id: Int
+        countries_id: Int @rules(apply: ["required"])
     ): User @create(model: "App\\User")
     updateUser(
         id: ID @rules(apply: ["required"])
