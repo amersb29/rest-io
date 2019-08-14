@@ -157,6 +157,7 @@ type Mutation {
         password: String @rules(apply: ["required"]) @bcrypt
         memberships_id: Int
         countries_id: Int @rules(apply: ["required"])
+        state: Int @rules(apply: ["required"])
     ): User @create(model: "App\\User")
     updateUser(
         id: ID @rules(apply: ["required"])
