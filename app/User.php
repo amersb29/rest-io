@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Payment;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'memberships_id', 'countries_id',
+        'first_name', 'last_name', 'email', 'password', 'memberships_id', 'countries_id', 'state'
     ];
 
     /**
@@ -45,7 +46,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Country', 'countries_id');
     }
 
-    public function roles(){
+    public function roles(): BelongsToMany
+    {
         return $this->belongsToMany('App\Role', 'assigned_roles');
     }
 
