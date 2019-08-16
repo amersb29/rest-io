@@ -19,6 +19,6 @@ class CreateCountriesSeeder extends Seeder
             [ 'id' => 2, 'name' => 'Estados Unidos', 'code' => 'USA' , 'created_at' => date('Y-m-d H:i:s'),],
         ];
 
-        Country::insert($memberships);
+        Country::insert($countries);
     }
 }
