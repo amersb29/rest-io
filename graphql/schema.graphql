@@ -157,13 +157,15 @@ input CreateUserInput {
     memberships_id: Int
     countries_id: Int @rules(apply: ["required"])
     state: Int @rules(apply: ["required"])
-    roles: CreateRolesRelation
+    roles: UserRolesRelation
 }
 
-input CreateRolesRelation {
+input UserRolesRelation {
     # create: [CreateRolesInput!]
     # connect: [ID!]
     sync: [ID!]
+    delete: [ID!]
+    disconnect: [ID!]
 }
 
 input CreateRolesInput {
@@ -171,8 +173,14 @@ input CreateRolesInput {
     description: String
 }
 
+input DeleteUserInput {
+    id: ID @rules(apply: ["required"])
+    roles: UserRolesRelation
+}
+
 type Mutation {
     createUser( input: CreateUserInput! @spread ): User @create(model: "App\\User")
+    deleteUser( input: DeleteUserInput! @spread ): User @delete(model: "App\\User")
 
     updateUser(
         id: ID @rules(apply: ["required"])
@@ -181,9 +189,7 @@ type Mutation {
         email: String @rules(apply: ["email", "unique:users,email"])
         password: String @bcrypt
     ): User @update(model: "App\\User")
-    deleteUser(
-        id: ID @rules(apply: ["required"])
-    ): User @delete(model: "App\\User")
+    
 
     createMembership(
         name: String @rules(apply: ["required"])

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
@@ -11,7 +11,7 @@ class Role extends Model
       'name', 'description',
   ];
 
-  public function users()
+  public function users(): BelongsToMany
   {
     return $this->belongsToMany('App\User', 'assigned_roles');
   }
