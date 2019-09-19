@@ -39,6 +39,8 @@ type Query {
 
     notebooks: [Notebook] @all
     notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
+
+    tiposProducto: [TipoProducto] @all
 }
 
 type User {
