@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 use App\Video;
 use App\Notebook;
 use App\TipoProducto;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
  
+    protected $fillable = [
+        'tipo_producto_id', 'name', 'url_img', 'description'
+    ];
+
     public function tipoProducto()
     {
         return $this->belongsTo(TipoProducto::class);
     }
 
-    public function videos()
+    public function videos(): HasMany
     {
         return $this->hasMany(Video::class);
     }

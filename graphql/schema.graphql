@@ -4,10 +4,17 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 "A date string with format `Y-m-d`, e.g. `2011-05-23`."
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
+#import users.graphql
+#import products.graphql
+#import videos.graphql
+
 type Query {
     users: [User!]! @all
     # @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+
+    products: [Product] @all
+    product(id: ID @eq): Product @find(model: "App\\Product")
 
     memberships: [Membership] @all
     membership(id: ID @eq): Membership @find(model: "App\\Membership")
@@ -30,34 +37,8 @@ type Query {
     # coupons: [Coupon] @all
     # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
 
-    products: [Product] @all
-    product(id: ID @eq): Product @find(model: "App\\Product")
-
-    videos: [Video] @all
-    videos(is_preview: Int! @eq): [Video] @all
-    video(id: ID! @eq): Video @find(model: "App\\Video")
-
     notebooks: [Notebook] @all
     notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
-}
-
-type User {
-    id: ID!
-    state: Int!
-    first_name: String!
-    last_name: String!
-    email: String!
-    roles: [Role!]! @belongsToMany
-    paymentMethods: [PaymentMethod] @belongsToMany
-    # coupons: [Coupon] @belongsToMany
-    membership: Membership @belongsTo
-    country: Country @belongsTo
-    products: [Product] @hasMany
-    purchases: [Purchase] @hasMany
-    payments: [Payment] @hasMany
-
-    created_at: DateTime!
-    updated_at: DateTime!
 }
 
 type Membership {
@@ -118,78 +99,34 @@ type Purchase {
 #     users: [User!]! @belongsToMany
 # }
 
-type TipoProducto {
-    id: ID!
-    description: String!
-    products: [Product] @hasMany
-}
-
-type Product {
-    id: ID!
-    tipoProducto: TipoProducto!
-    name: String!
-    description: String!
-    url_img: String!
-    users: [User!]! @belongsToMany
-    videos: [Video!]! @hasMany
-    notebook: Notebook @hasOne
-}
-
-type Video {
-    id: ID!
-    name: String!
-    vimeo_id: String!
-    is_preview: Int!
-    product: Product! @belongsTo
-}
-
 type Notebook {
     id: ID!
     name: String!
     product: Product! @belongsTo
 }
 
-input CreateUserInput {
-    first_name: String @rules(apply: ["required"])
-    last_name: String @rules(apply: ["required"])
-    email: String @rules(apply: ["required", "email", "unique:users,email"])
-    password: String @rules(apply: ["required"]) @bcrypt
-    memberships_id: Int
-    countries_id: Int @rules(apply: ["required"])
-    state: Int @rules(apply: ["required"])
-    roles: UserRolesRelation
-}
-
-input UserRolesRelation {
-    # create: [CreateRolesInput!]
+input RolesRelation {
+    # create: [RolesInput!]
     # connect: [ID!]
     sync: [ID!]
     delete: [ID!]
     disconnect: [ID!]
 }
 
-input CreateRolesInput {
-    name: String!
+input RolesInput {
+    id: ID
+    name: String
     description: String
 }
 
-input DeleteUserInput {
-    id: ID @rules(apply: ["required"])
-    roles: UserRolesRelation
-}
+type Mutation {  
 
-type Mutation {
     createUser( input: CreateUserInput! @spread ): User @create(model: "App\\User")
     deleteUser( input: DeleteUserInput! @spread ): User @delete(model: "App\\User")
-
-    updateUser(
-        id: ID @rules(apply: ["required"])
-        first_name: String 
-        last_name: String 
-        email: String @rules(apply: ["email", "unique:users,email"])
-        password: String @bcrypt
-    ): User @update(model: "App\\User")
-    
+    # updateUser( input: UpdateInput! @spread ): User @update(model: "App\\User")
+        
+    createProduct( input: CreateProductInput! @spread ): Product @create(model: "App\\Product")
+    deleteProduct( input: DeleteProductInput! @spread ): Product @delete(model: "App\\Product")
 
     createMembership(
         name: String @rules(apply: ["required"])
