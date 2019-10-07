@@ -16,3 +16,9 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('user', function () {
+    \App\User::create([
+        'state' => 1, 'first_name' => 'Jose', 'last_name' => 'Fonseca', 'email' => 'myemail@email.com', 'password' => bcrypt('123456789qq'), 'memberships_id' => null, 'countries_id' => 1
+    ]);
+})->describe('Create sample user');
