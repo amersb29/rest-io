@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Coupons;
+use App\Coupon;
 use Illuminate\Http\Request;
 
-class CouponsController extends Controller
+class CouponController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CouponsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Coupons  $coupons
+     * @param  \App\Coupon  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function show(Coupons $coupons)
+    public function show(Coupon $coupons)
     {
         //
     }
@@ -52,10 +52,10 @@ class CouponsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Coupons  $coupons
+     * @param  \App\Coupon  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coupons $coupons)
+    public function edit(Coupon $coupons)
     {
         //
     }
@@ -64,10 +64,10 @@ class CouponsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Coupons  $coupons
+     * @param  \App\Coupon  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coupons $coupons)
+    public function update(Request $request, Coupon $coupons)
     {
         //
     }
@@ -75,10 +75,10 @@ class CouponsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Coupons  $coupons
+     * @param  \App\Coupon  $coupons
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coupons $coupons)
+    public function destroy(Coupon $coupons)
     {
         //
     }

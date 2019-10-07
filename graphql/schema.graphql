@@ -4,41 +4,168 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 "A date string with format `Y-m-d`, e.g. `2011-05-23`."
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
+#import users.graphql
+#import products.graphql
+#import videos.graphql
+
 type Query {
     users: [User!]! @all
     # @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
 
-    memberships: [Memberships] @all
-    membership(id: ID @eq): Memberships @find(model: "App\\Memberships")
+    products: [Product] @all
+    product(id: ID @eq): Product @find(model: "App\\Product")
+
+    memberships: [Membership] @all
+    membership(id: ID @eq): Membership @find(model: "App\\Membership")
+
+    countries: [Country] @all
+    country(id: ID @eq): Country @find(model: "App\\Country")
 
     roles: [Role] @all
-    # role(id: ID @eq): Role @find(model: "App\Role")
+    role(id: ID @eq): Role @find(model: "App\\Role")
     
+    paymentMethods: [PaymentMethod] @all
+    paymentMethod(id: ID @eq): PaymentMethod @find(model: "App\\PaymentMethod")
+
+    purchases: [Purchase] @all
+    purchases(user_id: Int! @eq): [Purchase] @all
+
+    payments: [Payment] @all
+    payments(user_id: Int! @eq): [Payment] @all
+
+    # coupons: [Coupon] @all
+    # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
+
+    notebooks: [Notebook] @all
+    notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
+
+    tiposProducto: [TipoProducto] @all
 }
 
-type User {
-    id: ID!
-    first_name: String!
-    last_name: String!
-    email: String!
-    # roles: [Role] @belongsToMany
-    membership: Memberships! @belongsTo
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type Memberships {
+type Membership {
     id: ID!
     name: String!
     price: Int!
     users: [User] @hasMany
 }
 
+type Country {
+    id: ID!
+    name: String!
+    code: String!
+    users: [User] @hasMany
+}
+
 type Role {
     id: ID!
     name: String!
-    display_name: String
     description: String
-    # users: [User] @hasMany
+    permissions: [Permission!]! @belongsToMany
+    users: [User!]! @belongsToMany
+}
+
+type Permission {
+    id: ID!
+    name: String!
+    description: String
+    roles: [Role!]! @belongsToMany
+}
+
+type PaymentMethod {
+    id: ID!
+    name: String!
+    description: String!
+    users: [User!]! @belongsToMany
+}
+
+type Payment { 
+    id: ID!
+    user: User! @belongsTo
+    purchase: Purchase! @belongsTo
+    payment_method: PaymentMethod @belongsTo
+    total_ammount: Float!
+}
+
+type Purchase {
+    id: ID!
+    user: User! @belongsTo
+    products: [Product] @belongsToMany
+    # purchase_status_id
+}
+
+# type Coupon {
+#     id: ID!
+#     code: String!
+#     expiration: DateTime!
+#     users: [User!]! @belongsToMany
+# }
+
+type Notebook {
+    id: ID!
+    name: String!
+    product: Product! @belongsTo
+}
+
+input RolesRelation {
+    # create: [RolesInput!]
+    # connect: [ID!]
+    sync: [ID!]
+    delete: [ID!]
+    disconnect: [ID!]
+}
+
+input RolesInput {
+    id: ID
+    name: String
+    description: String
+}
+
+type Mutation {  
+
+    createUser( input: CreateUserInput! @spread ): User @create(model: "App\\User")
+    deleteUser( input: DeleteUserInput! @spread ): User @delete(model: "App\\User")
+    # updateUser( input: UpdateInput! @spread ): User @update(model: "App\\User")
+        
+    createProduct( input: CreateProductInput! @spread ): Product @create(model: "App\\Product")
+    deleteProduct( input: DeleteProductInput! @spread ): Product @delete(model: "App\\Product")
+
+    # createMembership(
+    #     name: String @rules(apply: ["required"])
+    #     price: Int @rules(apply: ["required"])
+    # ): Membership @create(model: "App\\Membership")
+    # updateMembership(
+    #     id: ID @rules(apply: ["required"])
+    #     name: String 
+    #     price: Int 
+    # ): Membership @update(model: "App\\Membership")
+    # deleteMembership(
+    #     id: ID @rules(apply: ["required"])
+    # ): Membership @delete(model: "App\\Membership")
+
+    # createRole(
+    #     name: String @rules(apply: ["required"])
+    #     description: String
+    # ): Role @create(model: "App\\Role")
+    # updateRole(
+    #     id: ID @rules(apply: ["required"])
+    #     name: String
+    #     description: String
+    # ): Role @update(model: "App\\Role")
+    # deleteRole(
+    #     id: ID @rules(apply: ["required"])
+    # ): Role @delete(model: "App\\Role")
+
+    # createPaymentMethod(
+    #     name: String @rules(apply: ["required"])
+    #     description: String @rules(apply: ["required"])
+    # ): PaymentMethod @create(model: "App\\PaymentMethod")
+    # updatePaymentMethod(
+    #     id: ID @rules(apply: ["required"])
+    #     name: String
+    #     description: String
+    # ): PaymentMethod @update(model: "App\\PaymentMethod")
+    # deletePaymentMethod(
+    #     id: ID @rules(apply: ["required"])
+    # ): PaymentMethod @delete(model: "App\\PaymentMethod")
 }

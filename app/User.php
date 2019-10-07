@@ -2,11 +2,13 @@
 
 namespace App;
 
-use App\Role;
-use App\Memberships;
+use App\Membership;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Payment;
 
 class User extends Authenticatable
 {
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'memberships_id', 'countries_id', 'state'
     ];
 
     /**
@@ -39,20 +41,48 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles(){
-        // return $this->belongsToMany('App\Role', 'assigned_roles');
-        return $this->belongsToMany(Role::class);
+    public function country()
+    {
+        return $this->belongsTo('App\Country', 'countries_id');
     }
 
-    public function membership(){
-        return $this->belongsTo(Memberships::class);
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Role', 'assigned_roles');
     }
 
-    public function products(){
-        return $this->hasMany(Products::class);
+    public function paymentMethods()
+    {
+        return $this->belongsToMany('App\PaymentMethod', 'assigned_payment_methods');
     }
 
-    public function hasRoles(array $roles){
+    public function coupons()
+    {
+        return $this->belongsToMany('App\Coupon', 'assigned_coupons');
+    }
+
+    public function membership()
+    {
+        return $this->belongsTo('App\Membership', 'memberships_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Product', 'assigned_products');
+    }
+
+    public function payments() 
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function hasRoles(array $roles)
+    {
       return $this->roles->pluck('name')->intersect($roles)->count();
     }
 

@@ -4,12 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Memberships extends Model
+class Coupon extends Model
 {
-    protected $guarded = [];
-
     public function users()
     {
-        return $this->hasMany(Users::class);
+        return $this->belongsToMany('App\User', 'assigned_coupons');
     }
 }

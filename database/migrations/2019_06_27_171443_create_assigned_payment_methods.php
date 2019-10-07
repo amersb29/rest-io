@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreviewsTable extends Migration
+class CreateAssignedPaymentMethods extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePreviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('previews', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('assigned_payment_methods', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned();
+            $table->integer('payment_method_id')->unsigned();
         });
     }
 
@@ -26,6 +26,6 @@ class CreatePreviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('previews');
+        Schema::dropIfExists('assigned_payment_methods');
     }
 }

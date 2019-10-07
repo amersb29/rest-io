@@ -1,0 +1,33 @@
+type User {
+    id: ID!
+    state: Int!
+    first_name: String!
+    last_name: String!
+    email: String!
+    roles: [Role!]! @belongsToMany
+    paymentMethods: [PaymentMethod] @belongsToMany
+    # coupons: [Coupon] @belongsToMany
+    membership: Membership @belongsTo
+    country: Country @belongsTo
+    products: [Product] @hasMany
+    purchases: [Purchase] @hasMany
+    payments: [Payment] @hasMany
+
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+input CreateUserInput {
+    first_name: String @rules(apply: ["required"])
+    last_name: String @rules(apply: ["required"])
+    email: String @rules(apply: ["required", "email", "unique:users,email"])
+    password: String @rules(apply: ["required"]) @bcrypt
+    memberships_id: Int
+    countries_id: Int @rules(apply: ["required"])
+    state: Int @rules(apply: ["required"])
+    roles: RolesRelation
+}
+
+input DeleteUserInput {
+    id: ID @rules(apply: ["required"])
+}

@@ -1,0 +1,24 @@
+type Video {
+    id: ID!
+    name: String!
+    vimeo_id: String!
+    is_preview: Int!
+    product: Product! @belongsTo
+}
+
+type Query {
+    videos: [Video] @all
+    videos(is_preview: Int! @eq): [Video] @all
+    video(id: ID! @eq): Video @find(model: "App\\Video")
+}
+
+input VideoInput {
+    id: ID
+    name: String
+    vimeo_id: String
+    is_preview: Int
+}
+
+input VideosRelation {
+    create: [VideoInput!]
+}
