@@ -21,8 +21,4 @@ input VideoInput {
 
 input VideosRelation {
     create: [VideoInput!]
-    # connect: [ID!]
-    # sync: [ID!]
-    delete: [VideoInput!]
-    # disconnect: [ID!]
 }

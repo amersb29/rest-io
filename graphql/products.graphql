@@ -26,5 +26,4 @@ input CreateProductInput {
 
 input DeleteProductInput {
     id: ID @rules(apply: ["required"])
-    videos: VideosRelation
 }

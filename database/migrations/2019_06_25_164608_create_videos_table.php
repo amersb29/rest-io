@@ -14,8 +14,11 @@ class CreateVideosTable extends Migration
     public function up()
     {
         Schema::create('videos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+
             $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            
             $table->string('name');
             $table->string('vimeo_id');
             $table->boolean('is_preview')->default(false);
