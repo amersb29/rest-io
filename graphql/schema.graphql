@@ -46,7 +46,7 @@ type Query {
 type Membership {
     id: ID!
     name: String!
-    price: Int!
+    price: Float!
     users: [User] @hasMany
 }
 
@@ -137,18 +137,18 @@ type Mutation {
     createProduct( input: CreateProductInput! @spread ): Product @create(model: "App\\Product")
     deleteProduct( input: DeleteProductInput! @spread ): Product @delete(model: "App\\Product")
 
-    # createMembership(
-    #     name: String @rules(apply: ["required"])
-    #     price: Int @rules(apply: ["required"])
-    # ): Membership @create(model: "App\\Membership")
-    # updateMembership(
-    #     id: ID @rules(apply: ["required"])
-    #     name: String 
-    #     price: Int 
-    # ): Membership @update(model: "App\\Membership")
-    # deleteMembership(
-    #     id: ID @rules(apply: ["required"])
-    # ): Membership @delete(model: "App\\Membership")
+    createMembership(
+        name: String @rules(apply: ["required"])
+        price: Float @rules(apply: ["required"])
+    ): Membership @create(model: "App\\Membership")
+    updateMembership(
+        id: ID @rules(apply: ["required"])
+        name: String 
+        price: Float 
+    ): Membership @update(model: "App\\Membership")
+    deleteMembership(
+        id: ID! @rules(apply: ["required"])
+    ): Membership @delete(model: "App\\Membership")
 
     # createRole(
     #     name: String @rules(apply: ["required"])
