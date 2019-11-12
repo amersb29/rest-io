@@ -150,29 +150,53 @@ type Mutation {
         id: ID! @rules(apply: ["required"])
     ): Membership @delete(model: "App\\Membership")
 
-    # createRole(
-    #     name: String @rules(apply: ["required"])
-    #     description: String
-    # ): Role @create(model: "App\\Role")
-    # updateRole(
-    #     id: ID @rules(apply: ["required"])
-    #     name: String
-    #     description: String
-    # ): Role @update(model: "App\\Role")
-    # deleteRole(
-    #     id: ID @rules(apply: ["required"])
-    # ): Role @delete(model: "App\\Role")
+    createRole(
+        name: String @rules(apply: ["required"])
+        description: String
+    ): Role @create(model: "App\\Role")
+    updateRole(
+        id: ID @rules(apply: ["required"])
+        name: String
+        description: String
+    ): Role @update(model: "App\\Role")
+    deleteRole(
+        id: ID! @rules(apply: ["required"])
+    ): Role @delete(model: "App\\Role")
 
-    # createPaymentMethod(
-    #     name: String @rules(apply: ["required"])
-    #     description: String @rules(apply: ["required"])
-    # ): PaymentMethod @create(model: "App\\PaymentMethod")
-    # updatePaymentMethod(
-    #     id: ID @rules(apply: ["required"])
-    #     name: String
-    #     description: String
-    # ): PaymentMethod @update(model: "App\\PaymentMethod")
-    # deletePaymentMethod(
-    #     id: ID @rules(apply: ["required"])
-    # ): PaymentMethod @delete(model: "App\\PaymentMethod")
+    createPaymentMethod(
+        name: String @rules(apply: ["required"])
+        description: String @rules(apply: ["required"])
+    ): PaymentMethod @create(model: "App\\PaymentMethod")
+    updatePaymentMethod(
+        id: ID @rules(apply: ["required"])
+        name: String
+        description: String
+    ): PaymentMethod @update(model: "App\\PaymentMethod")
+    deletePaymentMethod(
+        id: ID! @rules(apply: ["required"])
+    ): PaymentMethod @delete(model: "App\\PaymentMethod")
+    
+    createCountry(
+        name: String @rules(apply: ["required"])
+        code: String @rules(apply: ["required"])
+    ): Country @create(model: "App\\Country")
+    updateCountry(
+        id: ID @rules(apply: ["required"])
+        name: String
+        code: String
+    ): Country @update(model: "App\\Country")
+    deleteCountry(
+        id: ID! @rules(apply: ["required"])
+    ): Country @delete(model: "App\\Country")
+
+    createTipoProducto(
+        description: String @rules(apply: ["required"])
+    ): TipoProducto @create(model: "App\\TipoProducto")
+    updateTipoProducto(
+        id: ID @rules(apply: ["required"])
+        description: String
+    ): TipoProducto @update(model: "App\\TipoProducto")
+    deleteTipoProducto(
+        id: ID! @rules(apply: ["required"])
+    ): TipoProducto @delete(model: "App\\TipoProducto")
 }
