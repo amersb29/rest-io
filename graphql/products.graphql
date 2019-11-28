@@ -16,7 +16,7 @@ type Product {
 }
 
 input CreateProductInput {
-    tipoProducto: ID @rules(apply: ["required"])
+    tipo_producto_id: Int @rules(apply: ["required"])
     name: String @rules(apply: ["required"])
     description: String @rules(apply: ["required"])
     url_img: String @rules(apply: ["required"])

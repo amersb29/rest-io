@@ -17,7 +17,7 @@ class Product extends Model
 
     public function tipoProducto()
     {
-        return $this->belongsTo(TipoProducto::class);
+        return $this->belongsTo('App\TipoProducto', 'tipo_producto_id');
     }
 
     public function videos(): HasMany
