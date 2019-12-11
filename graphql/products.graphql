@@ -21,7 +21,6 @@ input CreateProductInput {
     description: String @rules(apply: ["required"])
     url_img: String @rules(apply: ["required"])
     videos: VideosRelation
-    # notebook: NotebookRelation
 }
 
 input DeleteProductInput {
