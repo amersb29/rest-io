@@ -12,7 +12,7 @@ class Product extends Model
 {
  
     protected $fillable = [
-        'tipo_producto_id', 'name', 'url_img', 'description'
+        'tipo_producto_id', 'name', 'image', 'document', 'description'
     ];
 
     public function tipoProducto()

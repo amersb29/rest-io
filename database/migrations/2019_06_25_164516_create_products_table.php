@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('tipo_producto_id')->default(1);
             $table->string('name');
             $table->longText('description');
-            $table->string('url_img');
+            $table->string('image')->nullable();
+            $table->string('document')->nullable();
             $table->timestamps();
         });
     }

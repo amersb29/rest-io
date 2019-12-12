@@ -140,6 +140,7 @@ type Mutation {
     # updateUser( input: UpdateInput! @spread ): User @update(model: "App\\User")
         
     createProduct( input: CreateProductInput! @spread ): Product @create(model: "App\\Product")
+    updateProduct( input: UpdateProductInput! @spread ): Product @update(model: "App\\Product")
     deleteProduct( input: DeleteProductInput! @spread ): Product @delete(model: "App\\Product")
 
     createMembership(
@@ -206,6 +207,6 @@ type Mutation {
     ): TipoProducto @delete(model: "App\\TipoProducto")
 
     upload(
-        files: [Upload!]
+        files: [Upload]
     ): String
 }

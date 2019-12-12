@@ -9,7 +9,8 @@ type Product {
     tipoProducto: TipoProducto!
     name: String!
     description: String!
-    url_img: String!
+    image: String
+    document: String
     users: [User!]! @belongsToMany
     videos: [Video!]! @hasMany
     notebook: Notebook @hasOne
@@ -19,10 +20,21 @@ input CreateProductInput {
     tipo_producto_id: Int @rules(apply: ["required"])
     name: String @rules(apply: ["required"])
     description: String @rules(apply: ["required"])
-    url_img: String @rules(apply: ["required"])
+    image: String @rules(apply: ["required"])
+    document: String @rules(apply: ["required"])
     videos: VideosRelation
 }
 
 input DeleteProductInput {
     id: ID @rules(apply: ["required"])
+}
+
+input UpdateProductInput {
+    id: ID @rules(apply: ["required"])
+    tipo_producto_id: Int 
+    name: String 
+    description: String 
+    image: String 
+    document: String 
+    videos: VideosRelation
 }

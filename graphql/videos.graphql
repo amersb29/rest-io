@@ -12,7 +12,20 @@ type Query {
     video(id: ID! @eq): Video @find(model: "App\\Video")
 }
 
-input VideoInput {
+input CreateVideoInput {
+    name: String
+    vimeo_id: String
+    is_preview: Int
+}
+
+input UpdateVideoInput {
+    id: ID
+    name: String
+    vimeo_id: String
+    is_preview: Int
+}
+
+input UpsertVideoInput {
     id: ID
     name: String
     vimeo_id: String
@@ -20,5 +33,7 @@ input VideoInput {
 }
 
 input VideosRelation {
-    create: [VideoInput!]
+    create: [CreateVideoInput!]
+    update: [UpdateVideoInput!]
+    upsert: [UpsertVideoInput!]
 }
