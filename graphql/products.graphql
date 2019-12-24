@@ -9,6 +9,7 @@ type Product {
     tipoProducto: TipoProducto!
     name: String!
     description: String!
+    price: Float!
     image: String
     document: String
     users: [User!]! @belongsToMany
@@ -20,6 +21,7 @@ input CreateProductInput {
     tipo_producto_id: Int @rules(apply: ["required"])
     name: String @rules(apply: ["required"])
     description: String @rules(apply: ["required"])
+    price: Float @rules(apply: ["required"])
     image: String @rules(apply: ["required"])
     document: String @rules(apply: ["required"])
     videos: VideosRelation
@@ -34,6 +36,7 @@ input UpdateProductInput {
     tipo_producto_id: Int 
     name: String 
     description: String 
+    price: Float
     image: String 
     document: String 
     videos: VideosRelation

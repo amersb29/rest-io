@@ -19,7 +19,7 @@ type Query {
     products: [Product] @all
     product(id: ID @eq): Product @find(model: "App\\Product")
     # Query para el sitio de IO
-    # products(tipo_producto_id: Int! @eq): [Product] @all(model: "App\\Product")
+    products(tipo_producto_id: Int! @eq): [Product] @all(model: "App\\Product")
 
     memberships: [Membership] @all
     membership(id: ID @eq): Membership @find(model: "App\\Membership")

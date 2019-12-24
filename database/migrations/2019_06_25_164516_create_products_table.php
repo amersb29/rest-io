@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('tipo_producto_id')->default(1);
             $table->string('name');
             $table->longText('description');
+            $table->float('price', 8, 2);
             $table->string('image')->nullable();
             $table->string('document')->nullable();
             $table->timestamps();
