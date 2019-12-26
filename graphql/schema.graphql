@@ -201,6 +201,7 @@ type Mutation {
     updateTipoProducto(
         id: ID @rules(apply: ["required"])
         description: String
+        price: Float
     ): TipoProducto @update(model: "App\\TipoProducto")
     deleteTipoProducto(
         id: ID! @rules(apply: ["required"])
