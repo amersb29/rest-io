@@ -1,0 +1,55 @@
+type Banner {
+    id: ID!
+    sedes_id: Int!
+    image: String!
+    status: Boolean!
+}
+
+input CreateBannerInput {
+    sedes_id: Int
+    image: String
+    status: Boolean
+}
+
+input UpdateBannerInput {
+    id: ID
+    sedes_id: Int
+    image: String
+    status: Boolean
+}
+
+input BannersRelation {
+    create: [CreateBannerInput!]
+    update: [UpdateBannerInput!]
+}
+
+type Sede {
+    id: ID!
+    countries_id: Int!
+    name: String!
+    code: String!
+    calendar: String!
+    banners: [Banner] @hasMany
+}
+
+input CreateSede {
+    countries_id: Int @rules(apply: ["required"])
+    name: String @rules(apply: ["required"])
+    code: String @rules(apply: ["required"])
+    calendar: String @rules(apply: ["required"])
+    banners: BannersRelation
+}
+
+input UpdateSede {
+    id: ID @rules(apply: ["required"])
+    countries_id: Int
+    name: String
+    code: String
+    calendar: String
+    banners: BannersRelation
+}
+
+input DeleteSede {
+    id: ID @rules(apply: ["required"])
+}
+

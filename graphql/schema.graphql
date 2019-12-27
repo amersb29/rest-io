@@ -10,6 +10,7 @@ scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload
 #import users.graphql
 #import products.graphql
 #import videos.graphql
+#import sedes.graphql
 
 type Query {
     users: [User!]! @all @middleware(checks: ["auth:api"])
@@ -42,10 +43,13 @@ type Query {
     # coupons: [Coupon] @all
     # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
 
-    notebooks: [Notebook] @all
-    notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
+    # notebooks: [Notebook] @all
+    # notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
 
     tiposProducto: [TipoProducto] @all
+
+    sedes: [Sede] @all
+    sede( countries_id: Int! @eq): [Sede] @all
 }
 
 type Membership {
@@ -60,6 +64,7 @@ type Country {
     name: String!
     code: String!
     users: [User] @hasMany
+    sedes: [Sede] @hasMany
 }
 
 type Role {

@@ -30,5 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CreatePurchasesSeeder::class);
         $this->call(CreatePaymentsSeeder::class);
         $this->call(CreatePurchasesProductsRelationSeeder::class);
+        $this->call(CreateSedesSeeder::class);
+        $this->call(CreateBannersSeeder::class);
+
     }
 }
