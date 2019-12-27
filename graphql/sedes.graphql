@@ -30,6 +30,7 @@ type Sede {
     code: String!
     calendar: String!
     banners: [Banner] @hasMany
+    country: Country @belongsTo
 }
 
 input CreateSede {

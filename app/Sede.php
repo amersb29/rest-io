@@ -13,7 +13,7 @@ class Sede extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo('App\Country', 'countries_id');
     }
     
     public function banners()

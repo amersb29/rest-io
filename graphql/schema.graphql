@@ -50,6 +50,7 @@ type Query {
 
     sedes: [Sede] @all
     sede( countries_id: Int! @eq): [Sede] @all
+    sede( id: ID! @eq): Sede @find
 }
 
 type Membership {
