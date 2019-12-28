@@ -20,7 +20,7 @@ type Query {
     products: [Product] @all
     product(id: ID @eq): Product @find(model: "App\\Product")
     # Query para el sitio de IO
-    products(tipo_producto_id: Int! @eq): [Product] @all(model: "App\\Product")
+    productsFilter(tipo_producto_id: Int! @eq): [Product] @all(model: "App\\Product")
 
     memberships: [Membership] @all
     membership(id: ID @eq): Membership @find(model: "App\\Membership")
@@ -148,6 +148,10 @@ type Mutation {
     createProduct( input: CreateProductInput! @spread ): Product @create(model: "App\\Product")
     updateProduct( input: UpdateProductInput! @spread ): Product @update(model: "App\\Product")
     deleteProduct( input: DeleteProductInput! @spread ): Product @delete(model: "App\\Product")
+    
+    createSede( input: CreateSedeInput! @spread ): Sede @create(model: "App\\Sede")
+    updateSede( input: UpdateSedeInput! @spread ): Sede @update(model: "App\\Sede")
+    deleteSede( input: DeleteSedeInput! @spread ): Sede @delete(model: "App\\Sede")
 
     createMembership(
         name: String @rules(apply: ["required"])

@@ -33,7 +33,7 @@ type Sede {
     country: Country @belongsTo
 }
 
-input CreateSede {
+input CreateSedeInput {
     countries_id: Int @rules(apply: ["required"])
     name: String @rules(apply: ["required"])
     code: String @rules(apply: ["required"])
@@ -41,7 +41,7 @@ input CreateSede {
     banners: BannersRelation
 }
 
-input UpdateSede {
+input UpdateSedeInput {
     id: ID @rules(apply: ["required"])
     countries_id: Int
     name: String
@@ -50,7 +50,7 @@ input UpdateSede {
     banners: BannersRelation
 }
 
-input DeleteSede {
+input DeleteSedeInput {
     id: ID @rules(apply: ["required"])
 }
 
