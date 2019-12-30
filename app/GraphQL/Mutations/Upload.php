@@ -7,7 +7,7 @@ use Illuminate\Http\UploadedFile;
 class Upload
 {
     const DOCS_FOLDER = "docs";
-    const IMAGE_FOLDER = "image";
+    const IMAGE_FOLDER = "images";
 
     /**
      * Upload a file, store it on the server and return the path.

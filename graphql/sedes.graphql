@@ -6,14 +6,12 @@ type Banner {
 }
 
 input CreateBannerInput {
-    sedes_id: Int
     image: String
     status: Boolean
 }
 
 input UpdateBannerInput {
     id: ID
-    sedes_id: Int
     image: String
     status: Boolean
 }
