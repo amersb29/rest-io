@@ -49,8 +49,10 @@ type Query {
     tiposProducto: [TipoProducto] @all
 
     sedes: [Sede] @all
-    sede( countries_id: Int! @eq): [Sede] @all
     sede( id: ID! @eq): Sede @find
+    sede_filter(countries_id: Int! @eq): [Sede] @all
+
+    banners(sede_id: ID! @eq): [Banner] @all
 }
 
 type Membership {
@@ -152,6 +154,8 @@ type Mutation {
     createSede( input: CreateSedeInput! @spread ): Sede @create(model: "App\\Sede")
     updateSede( input: UpdateSedeInput! @spread ): Sede @update(model: "App\\Sede")
     deleteSede( input: DeleteSedeInput! @spread ): Sede @delete(model: "App\\Sede")
+    
+    deleteBanner( input: DeleteBannerInput! @spread ): Banner @delete(model: "App\\Banner")
 
     createMembership(
         name: String @rules(apply: ["required"])

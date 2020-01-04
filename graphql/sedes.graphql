@@ -5,6 +5,10 @@ type Banner {
     status: Boolean!
 }
 
+input DeleteBannerInput {
+    id: ID @rules(apply: ["required"])
+}
+
 input CreateBannerInput {
     image: String
     status: Boolean
