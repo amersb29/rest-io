@@ -19,8 +19,12 @@ class Upload
     public function resolve($root, array $args): ?string
     {
         /** @var \Illuminate\Http\UploadedFile $file */
-        foreach ($args["files"] as $file) {
-            $file->storePubliclyAs('public/'. $this->getFolderName( $file ) , $file->getClientOriginalName() );
+        if( !empty( $args["files"] ) )
+        {
+            foreach ($args["files"] as $file) 
+            {
+                $file->storePubliclyAs('public/'. $this->getFolderName( $file ) , $file->getClientOriginalName() );
+            }
         }
 
         return 'Files created';
