@@ -11,6 +11,7 @@ scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload
 #import products.graphql
 #import videos.graphql
 #import sedes.graphql
+#import subscribers.graphql
 
 type Query {
     users: [User!]! @all @middleware(checks: ["auth:api"])

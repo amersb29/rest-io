@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CreatePurchasesProductsRelationSeeder::class);
         $this->call(CreateSedesSeeder::class);
         $this->call(CreateBannersSeeder::class);
+        $this->call(CreateSubscribersSeeder::class);
 
     }
 }

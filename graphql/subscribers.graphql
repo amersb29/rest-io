@@ -1,0 +1,24 @@
+type Subscriber {
+    id: ID!
+    email: String!
+    name: String!
+    phone: String
+}
+
+input CreateSubscriberInput {
+    name: String @rules(apply: ["required"])
+    email: String @rules(apply: ["required", "email", "unique:users,email"])
+    phone: String 
+}
+
+input DeleteSubscriberInput {
+    id: ID @rules(apply: ["required"])
+}
+
+extend type Query {
+    subscribers: [Subscriber!]! @all
+}
+extend type Mutation {
+    createSubscriber( input: CreateSubscriberInput! @spread ): Subscriber @create(model: "App\\Subscriber")
+    deleteSubscriber( input: DeleteSubscriberInput! @spread ): Subscriber @delete(model: "App\\Subscriber")
+}
