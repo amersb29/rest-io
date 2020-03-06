@@ -41,8 +41,8 @@ type Query {
     payments: [Payment] @all
     payments(user_id: Int! @eq): [Payment] @all
 
-    # coupons: [Coupon] @all
-    # coupon: Coupon(id: ID @eq): Coupon @find(model: "App\\Coupon")
+    coupons: [Coupon] @all
+    coupon(code: String! @eq): Coupon @find(model: "App\\Coupon")
 
     # notebooks: [Notebook] @all
     # notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
@@ -108,12 +108,13 @@ type Purchase {
     # purchase_status_id
 }
 
-# type Coupon {
-#     id: ID!
-#     code: String!
-#     expiration: DateTime!
-#     users: [User!]! @belongsToMany
-# }
+type Coupon {
+    id: ID!
+    code: String!
+    discount: Float!
+    expiration: Date!
+    users: [User!]! @belongsToMany
+}
 
 type Notebook {
     id: ID!
