@@ -6,6 +6,9 @@ use App\Membership;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Joselfonseca\LighthouseGraphQLPassport\MustVerifyEmailGraphQL;
+use Joselfonseca\LighthouseGraphQLPassport\HasLoggedInTokens;
+// use Joselfonseca\LighthouseGraphQLPassport\HasSocialLogin;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -17,6 +20,9 @@ use App\Payment;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
+    // use HasSocialLogin;
+    use MustVerifyEmailGraphQL;
+    use HasLoggedInTokens;
 
     /**
      * The attributes that are mass assignable.
