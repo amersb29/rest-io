@@ -4,6 +4,7 @@ type User {
     first_name: String!
     last_name: String!
     email: String!
+    email_verified_at: String
     password: String
     roles: [Role!]! @belongsToMany
     paymentMethods: [PaymentMethod] @belongsToMany

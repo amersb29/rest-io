@@ -26,7 +26,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/userVerified';
 
     /**
      * Create a new controller instance.
@@ -68,7 +68,16 @@ class VerificationController extends Controller
             event(new Verified($request->user()));
         }
 
-        return response(['message'=>'Successully verified']);
+        return redirect($this->redirectPath())->with('verified', true);
+    }
+
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
     }
 
     /**
@@ -91,4 +100,5 @@ class VerificationController extends Controller
 
         return back()->with('resent', true);
     }
+
 }
