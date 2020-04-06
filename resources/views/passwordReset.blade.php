@@ -51,8 +51,8 @@
                     <div class="col-md-12">
                         <div class="card-body justify-content-md-center align-content-md-center text-center">
                             <h5 class="card-title">¡Todo listo!</h5>
-                            <p class="card-text">Tu usuario ha sido activado.</p>
-                            <p class="card-text text-justify">Ahora podrás iniciar sesión con tu correo electrónico y la contraseña que diste de alta en este sitio.</p>
+                            <p class="card-text">Tu contraseña ha sido actualizada.</p>
+                            <p class="card-text text-justify">Ahora podrás iniciar sesión con tu correo electrónico y tu nueva contraseña.</p>
                         </div>
                     </div>
                 </div>

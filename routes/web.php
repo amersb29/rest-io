@@ -14,5 +14,9 @@
 Route::get('/userVerified', function () {
     return view('userVerified');
 });
+Route::get('/passwordReset', function () {
+    return view('passwordReset');
+});
 
+// Auth::routes(['verify' => true]);
 Auth::routes();
