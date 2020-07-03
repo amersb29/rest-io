@@ -8,7 +8,7 @@ use App\Sede;
 class Banner extends Model
 {
     protected $fillable = [
-        'sedes_id', 'image', 'status'
+        'sedes_id', 'description', 'image', 'status'
     ];
 
     public function sedes()

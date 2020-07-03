@@ -15,8 +15,8 @@ class CreateCountriesSeeder extends Seeder
         DB::table('countries')->delete();
 
         $countries = [
-            [ 'id' => 1, 'name' => 'México', 'code' => 'MX' , 'created_at' => date('Y-m-d H:i:s'),],
-            [ 'id' => 2, 'name' => 'Estados Unidos', 'code' => 'USA' , 'created_at' => date('Y-m-d H:i:s'),],
+            [ 'id' => 1, 'name' => 'México', 'code' => 'MX' , 'currency' => 'MXN' , 'created_at' => date('Y-m-d H:i:s'),],
+            [ 'id' => 2, 'name' => 'Estados Unidos', 'code' => 'USA' , 'currency' => 'USD' , 'created_at' => date('Y-m-d H:i:s'),],
         ];
 
         Country::insert($countries);

@@ -17,6 +17,7 @@ type Query {
     users: [User!]! @all @middleware(checks: ["auth:api"])
     # @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User") @middleware(checks: ["auth:api"])
+    user(email: String @eq): User @find(model: "App\\User")
 
     products: [Product] @all
     product(id: ID @eq): Product @find(model: "App\\Product")

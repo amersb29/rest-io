@@ -1,6 +1,7 @@
 type Banner {
     id: ID!
     sedes_id: Int!
+    description: String!
     image: String!
     status: Boolean!
 }
@@ -10,12 +11,14 @@ input DeleteBannerInput {
 }
 
 input CreateBannerInput {
+    description: String
     image: String
     status: Boolean
 }
 
 input UpdateBannerInput {
     id: ID
+    description: String
     image: String
     status: Boolean
 }

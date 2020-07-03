@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
 Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
+
+Route::post('/reservation', 'Api\ReservationController@sendReservationEmail')->name('reservation.sendEmail');
