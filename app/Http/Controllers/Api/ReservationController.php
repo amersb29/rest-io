@@ -23,5 +23,7 @@ class ReservationController extends Controller {
         $message->subject('Requiero informes sobre el evento "' . $request->post('course') . '"');
         $message->priority(3);
     });
+
+    return response(json_encode(['status'=>'OK']), 200)->header('Content-Type', 'application/json');
   }
 }
