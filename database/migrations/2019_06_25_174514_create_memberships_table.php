@@ -15,8 +15,7 @@ class CreateMembershipsTable extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->float('price');
+            $table->integer('tipo_producto_id');
             $table->integer('courses');
             $table->integer('conferences');
             $table->timestamps();

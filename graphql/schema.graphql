@@ -53,8 +53,7 @@ type Query {
 
 type Membership {
     id: ID!
-    name: String!
-    price: Float!
+    tipoProducto: TipoProducto!
     courses: Int!
     conferences: Int!
     users: [User] @hasMany

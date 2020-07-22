@@ -20,6 +20,8 @@ class CreateTipoProductosSeeder extends Seeder
             [ 'id' => 3, 'price' => 800, 'description' => 'Documentales', ],
             [ 'id' => 4, 'price' => 0, 'description' => 'Sesión de Preguntas y Respuestas', ],
             [ 'id' => 5, 'price' => 0, 'description' => 'Taller de Introspección', ],
+            [ 'id' => 6, 'price' => 1249, 'description' => 'Membresía Premium', ],
+            [ 'id' => 7, 'price' => 2499, 'description' => 'Membresía Platinum', ],
         ];
 
         TipoProducto::insert($videos);

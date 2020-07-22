@@ -13,11 +13,16 @@ class Membership extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'courses', 'conferences'
+        'tipo_producto_id', 'courses', 'conferences'
     ];
 
     public function users()
     {
         return $this->hasMany('App\User', 'memberships_id');
+    }
+
+    public function tipoProducto()
+    {
+        return $this->belongsTo('App\TipoProducto', 'tipo_producto_id');
     }
 }
