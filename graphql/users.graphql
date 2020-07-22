@@ -12,6 +12,7 @@ type User {
     membership: Membership @belongsTo
     country: Country @belongsTo
     products: [Product] @hasMany
+    membership_products: [Product] @hasMany
     purchases: [Purchase] @hasMany
     payments: [Payment] @hasMany
 

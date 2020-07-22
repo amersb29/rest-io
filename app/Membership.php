@@ -13,7 +13,7 @@ class Membership extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price',
+        'name', 'price', 'courses', 'conferences'
     ];
 
     public function users()

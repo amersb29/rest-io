@@ -36,17 +36,11 @@ type Query {
     paymentMethods: [PaymentMethod] @all
     paymentMethod(id: ID @eq): PaymentMethod @find(model: "App\\PaymentMethod")
 
-    purchases: [Purchase] @all
-    purchases(user_id: Int! @eq): [Purchase] @all
-
     payments: [Payment] @all
     payments(user_id: Int! @eq): [Payment] @all
 
     coupons: [Coupon] @all
     coupon(code: String! @eq): Coupon @find(model: "App\\Coupon")
-
-    # notebooks: [Notebook] @all
-    # notebook(id: ID @eq): Notebook @find(model: "App\\Notebook")
 
     tiposProducto: [TipoProducto] @all
 
@@ -61,6 +55,8 @@ type Membership {
     id: ID!
     name: String!
     price: Float!
+    courses: Int!
+    conferences: Int!
     users: [User] @hasMany
 }
 
@@ -97,16 +93,8 @@ type PaymentMethod {
 type Payment { 
     id: ID!
     user: User! @belongsTo
-    purchase: Purchase! @belongsTo
     payment_method: PaymentMethod @belongsTo
     total_ammount: Float!
-}
-
-type Purchase {
-    id: ID!
-    user: User! @belongsTo
-    products: [Product] @belongsToMany
-    # purchase_status_id
 }
 
 type Coupon {

@@ -35,8 +35,8 @@ class Product extends Model
         return $this->belongsToMany('App\User', 'assigned_products');
     }
 
-    public function purchases()
+    public function payments()
     {
-        return $this->belongsToMany('App\Purchase', 'assigned_purchase_product');
+        return $this->belongsToMany('App\Payment', 'assigned_purchase_product');
     }
 }

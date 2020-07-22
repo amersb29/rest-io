@@ -15,7 +15,7 @@ class CreateAssignedPurchaseProductTable extends Migration
     {
         Schema::create('assigned_purchase_product', function (Blueprint $table) {
             $table->unsignedInteger('product_id');
-            $table->unsignedInteger('purchase_id');
+            $table->unsignedInteger('payment_id');
         });
     }
 

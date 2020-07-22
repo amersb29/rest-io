@@ -17,6 +17,8 @@ class CreateMembershipsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
+            $table->integer('courses');
+            $table->integer('conferences');
             $table->timestamps();
         });
     }

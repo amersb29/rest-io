@@ -71,9 +71,14 @@ class User extends Authenticatable
         return $this->belongsTo('App\Membership', 'memberships_id');
     }
 
-    public function products()
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany('App\Product', 'assigned_products');
+    }
+
+    public function membership_products(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Product', 'assigned_membership_products');
     }
 
     public function payments() 
