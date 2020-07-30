@@ -1,0 +1,38 @@
+type Payment { 
+    id: ID!
+    user: User! @belongsTo
+    payment_method: PaymentMethod @belongsTo
+    payment_type: Int!
+    total_ammount: Float!
+}
+
+input UserRelation {
+    connect: ID
+}
+
+input PaymentMethodRelation {
+    connect: ID
+}
+
+input PaymentProductsRelation {
+    sync: [ID!]
+    delete: [ID!]
+    disconnect: [ID!]
+}
+
+input CreatePaymentInput {
+    user: UserRelation
+    payment_method: PaymentMethodRelation
+    payment_type: Int @rules(apply: ["required"])
+    total_ammount: Float @rules(apply: ["required"])
+    products: PaymentProductsRelation
+}
+
+extend type Query {
+    payments: [Payment] @all
+    paymentsByUser(user_id: ID! @eq): [Payment] @all
+}
+extend type Mutation {
+    createProductsPayment( input: CreatePaymentInput! @spread ): Payment @create(model: "App\\Payment")
+    # deleteSubscriber( input: DeleteSubscriberInput! @spread ): Subscriber @delete(model: "App\\Subscriber")
+}

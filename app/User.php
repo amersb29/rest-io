@@ -86,11 +86,6 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
 
-    public function purchases()
-    {
-        return $this->hasMany(Purchase::class);
-    }
-
     public function hasRoles(array $roles)
     {
       return $this->roles->pluck('name')->intersect($roles)->count();

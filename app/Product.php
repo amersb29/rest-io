@@ -7,6 +7,7 @@ use App\Video;
 use App\Notebook;
 use App\TipoProducto;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -35,7 +36,7 @@ class Product extends Model
         return $this->belongsToMany('App\User', 'assigned_products');
     }
 
-    public function payments()
+    public function payments(): BelongsTo
     {
         return $this->belongsToMany('App\Payment', 'assigned_purchase_product');
     }

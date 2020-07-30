@@ -18,5 +18,5 @@ Route::get('/passwordReset', function () {
     return view('passwordReset');
 });
 
-// Auth::routes(['verify' => true]);
-Auth::routes();
+Auth::routes(['verify' => true]);
+// Auth::routes();

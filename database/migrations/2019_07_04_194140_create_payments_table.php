@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('payment_method_id');
+            $table->unsignedInteger('payment_type');
             $table->float('total_ammount');
             $table->timestamps();
         });

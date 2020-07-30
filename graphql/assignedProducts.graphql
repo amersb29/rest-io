@@ -1,0 +1,22 @@
+type AssignedProducts {
+    user_id: ID!
+    product_id: ID!
+    type: Int!
+    valid_until: DateTime!
+}
+
+input CreateAssignedProductsInput {
+  user_id: ID @rules(apply: ["required"])
+  product_id: ID @rules(apply: ["required"])
+  type: Int @rules(apply: ["required"])
+  valid_until: DateTime @rules(apply: ["required"])
+}
+
+extend type Query {
+  assignedProducts: [AssignedProducts] @all
+  assignedProductsByUser(user_id: ID! @eq): [AssignedProducts] @all(model: "App\\AssignedProducts")
+}
+
+extend type Mutation {
+  createUserProductRelation( input: CreateAssignedProductsInput! @spread ): AssignedProducts @create(model: "App\\AssignedProducts")
+}

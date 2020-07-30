@@ -7,17 +7,20 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "Can be used as an argument to upload files using https://github.com/jaydenseric/graphql-multipart-request-spec" 
 scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
 
-#import users.graphql
-#import products.graphql
-#import videos.graphql
+#import assignedProducts.graphql
 #import sedes.graphql
 #import subscribers.graphql
+#import payments.graphql
+#import products.graphql
+#import users.graphql
+#import videos.graphql
+
 
 type Query {
     users: [User!]! @all @middleware(checks: ["auth:api"])
     # @paginate(type: "paginator" model: "App\\User")
-    user(id: ID @eq): User @find(model: "App\\User") @middleware(checks: ["auth:api"])
-    user(email: String @eq): User @find(model: "App\\User")
+    findUserById(id: ID @eq): User @find(model: "App\\User") 
+    user(email: String @eq): User @find(model: "App\\User") 
 
     products: [Product] @all
     product(id: ID @eq): Product @find(model: "App\\Product")
@@ -36,8 +39,8 @@ type Query {
     paymentMethods: [PaymentMethod] @all
     paymentMethod(id: ID @eq): PaymentMethod @find(model: "App\\PaymentMethod")
 
-    payments: [Payment] @all
-    payments(user_id: Int! @eq): [Payment] @all
+    # payments: [Payment] @all
+    # payments(user_id: Int! @eq): [Payment] @all
 
     coupons: [Coupon] @all
     coupon(code: String! @eq): Coupon @find(model: "App\\Coupon")
@@ -49,6 +52,7 @@ type Query {
     sede_filter(countries_id: Int! @eq): [Sede] @all
 
     banners(sede_id: ID! @eq): [Banner] @all
+
 }
 
 type Membership {
@@ -87,13 +91,6 @@ type PaymentMethod {
     name: String!
     description: String!
     users: [User!]! @belongsToMany
-}
-
-type Payment { 
-    id: ID!
-    user: User! @belongsTo
-    payment_method: PaymentMethod @belongsTo
-    total_ammount: Float!
 }
 
 type Coupon {
