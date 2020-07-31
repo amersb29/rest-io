@@ -14,7 +14,7 @@ input CreateAssignedProductsInput {
 
 extend type Query {
   assignedProducts: [AssignedProducts] @all
-  assignedProductsByUser(user_id: ID! @eq): [AssignedProducts] @all(model: "App\\AssignedProducts")
+  assignedProductsByUser(user_id: ID! @eq): [AssignedProducts] @all
 }
 
 extend type Mutation {

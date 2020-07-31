@@ -14,10 +14,12 @@ class CreateAssignedProductsTable extends Migration
     public function up()
     {
         Schema::create('assigned_products', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('type')->default(0);
             $table->timestamp('valid_until');
+            $table->timestamps();
         });
     }
 
